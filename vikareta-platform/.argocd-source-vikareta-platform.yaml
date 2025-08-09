@@ -22,5 +22,5 @@ helm:
     value: ghcr.io/aryannkumar/vikareta-web
     forcestring: true
   - name: services.web.image.tag
-    value: main
+    value: main-446c460
     forcestring: true

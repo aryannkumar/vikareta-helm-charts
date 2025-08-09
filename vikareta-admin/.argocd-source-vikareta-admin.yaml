@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/aryannkumar/vikareta-admin
     forcestring: true
   - name: image.tag
-    value: main-edce990
+    value: main-82a10ae
     forcestring: true

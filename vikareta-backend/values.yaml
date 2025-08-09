@@ -1,0 +1,47 @@
+name: vikareta-backend
+namespace: vikareta
+
+image:
+  repository: ghcr.io/aryannkumar/vikareta-backend
+  tag: main
+  pullPolicy: Always
+
+replicaCount: 2
+
+service:
+  type: ClusterIP
+  port: 5001
+  targetPort: 5001
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+imagePullSecrets:
+  - name: ghcr-secret
+
+env:
+  - name: NODE_ENV
+    value: "production"
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 5001
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /health
+    port: 5001
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

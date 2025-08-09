@@ -1,0 +1,122 @@
+# Global configuration
+global:
+  namespace: vikareta
+  registry: ghcr.io/aryannkumar
+  pullPolicy: Always
+  imagePullSecrets: []
+
+# Individual service configurations
+services:
+  admin:
+    enabled: true
+    name: vikareta-admin
+    image:
+      repository: ghcr.io/aryannkumar/vikareta-admin
+      tag: main
+    replicaCount: 2
+    port: 3002
+    targetPort: 3002
+    service:
+      type: ClusterIP
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    env: []
+    
+  backend:
+    enabled: true
+    name: vikareta-backend
+    image:
+      repository: ghcr.io/aryannkumar/vikareta-backend
+      tag: main
+    replicaCount: 2
+    port: 5001
+    targetPort: 5001
+    service:
+      type: ClusterIP
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    env:
+      - name: NODE_ENV
+        value: "production"
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 5001
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    readinessProbe:
+      httpGet:
+        path: /health
+        port: 5001
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      
+  dashboard:
+    enabled: true
+    name: vikareta-dashboard
+    image:
+      repository: ghcr.io/aryannkumar/vikareta-dashboard
+      tag: main
+    replicaCount: 2
+    port: 3001
+    targetPort: 3001
+    service:
+      type: ClusterIP
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    env: []
+    
+  web:
+    enabled: true
+    name: vikareta-web
+    image:
+      repository: ghcr.io/aryannkumar/vikareta-web
+      tag: main
+    replicaCount: 2
+    port: 3000
+    targetPort: 3000
+    service:
+      type: ClusterIP
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    env: []
+
+# Service account configuration
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+# Pod configuration
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+
+# Node selection
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# Autoscaling (disabled by default)
+autoscaling:
+  enabled: false

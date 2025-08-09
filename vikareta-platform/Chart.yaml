@@ -1,0 +1,20 @@
+apiVersion: v2
+name: vikareta-platform
+description: A Helm chart for Vikareta B2B Marketplace Platform
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - vikareta
+  - b2b
+  - marketplace
+  - microservices
+home: https://vikareta.com
+sources:
+  - https://github.com/aryannkumar/vikareta-admin
+  - https://github.com/aryannkumar/vikareta-backend
+  - https://github.com/aryannkumar/vikareta-dashboard
+  - https://github.com/aryannkumar/vikareta-web
+maintainers:
+  - name: Vikareta Team
+    email: team@vikareta.com

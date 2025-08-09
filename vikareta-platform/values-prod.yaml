@@ -1,0 +1,55 @@
+# Production environment overrides
+global:
+  namespace: vikareta
+
+services:
+  admin:
+    replicaCount: 3
+    image:
+      tag: main
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
+        
+  backend:
+    replicaCount: 3
+    image:
+      tag: main
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
+    env:
+      - name: NODE_ENV
+        value: "production"
+        
+  dashboard:
+    replicaCount: 3
+    image:
+      tag: main
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
+        
+  web:
+    replicaCount: 3
+    image:
+      tag: main
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi

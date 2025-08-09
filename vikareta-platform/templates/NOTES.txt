@@ -1,0 +1,23 @@
+🎉 Vikareta Platform has been deployed successfully!
+
+Your services are now running in the {{ .Values.global.namespace }} namespace:
+
+{{- range $serviceName, $service := .Values.services }}
+{{- if $service.enabled }}
+- {{ $service.name }}: http://{{ $service.name }}-service.{{ $.Values.global.namespace }}.svc.cluster.local:{{ $service.port }}
+{{- end }}
+{{- end }}
+
+To check the status of your deployment:
+  kubectl get pods -n {{ .Values.global.namespace }}
+  kubectl get services -n {{ .Values.global.namespace }}
+
+To view logs for a specific service:
+{{- range $serviceName, $service := .Values.services }}
+{{- if $service.enabled }}
+  kubectl logs -f deployment/{{ $service.name }} -n {{ $.Values.global.namespace }}
+{{- end }}
+{{- end }}
+
+For more information about this chart, visit:
+  https://github.com/aryannkumar/vikareta-helm-charts

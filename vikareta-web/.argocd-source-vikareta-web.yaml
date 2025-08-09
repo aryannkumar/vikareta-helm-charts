@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: image.repository
+    value: ghcr.io/aryannkumar/vikareta-web
+    forcestring: true
+  - name: image.tag
+    value: main-446c460
+    forcestring: true

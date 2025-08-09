@@ -120,3 +120,60 @@ affinity: {}
 # Autoscaling (disabled by default)
 autoscaling:
   enabled: false
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "cloudflare-origin"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+  hosts:
+    - host: vikareta.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service:
+            name: vikareta-web-service
+            port: 3000
+    - host: www.vikareta.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service:
+            name: vikareta-web-service
+            port: 3000
+    - host: admin.vikareta.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service:
+            name: vikareta-admin-service
+            port: 3002
+    - host: dashboard.vikareta.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service:
+            name: vikareta-dashboard-service
+            port: 3001
+    - host: api.vikareta.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service:
+            name: vikareta-backend-service
+            port: 5001
+  tls:
+    - secretName: vikareta-tls
+      hosts:
+        - vikareta.com
+        - www.vikareta.com
+        - admin.vikareta.com
+        - dashboard.vikareta.com
+        - api.vikareta.com

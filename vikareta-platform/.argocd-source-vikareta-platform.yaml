@@ -1,0 +1,20 @@
+helm:
+  parameters:
+  - name: services.admin.image.repository
+    value: ghcr.io/aryannkumar/vikareta-admin
+    forcestring: true
+  - name: services.admin.image.tag
+    value: main-8a232a3
+    forcestring: true
+  - name: services.backend.image.repository
+    value: ghcr.io/aryannkumar/vikareta-backend
+    forcestring: true
+  - name: services.backend.image.tag
+    value: main-7345a12
+    forcestring: true
+  - name: services.dashboard.image.repository
+    value: ghcr.io/aryannkumar/vikareta-dashboard
+    forcestring: true
+  - name: services.dashboard.image.tag
+    value: main-15233d4
+    forcestring: true

@@ -18,3 +18,9 @@ helm:
   - name: services.dashboard.image.tag
     value: main-78b54ed
     forcestring: true
+  - name: services.web.image.repository
+    value: ghcr.io/aryannkumar/vikareta-web
+    forcestring: true
+  - name: services.web.image.tag
+    value: main
+    forcestring: true

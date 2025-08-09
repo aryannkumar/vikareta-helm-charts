@@ -3,7 +3,8 @@ global:
   namespace: vikareta
   registry: ghcr.io/aryannkumar
   pullPolicy: Always
-  imagePullSecrets: []
+  imagePullSecrets:
+    - name: ghcr-secret
 
 # Individual service configurations
 services:

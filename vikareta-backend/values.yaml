@@ -3,7 +3,7 @@ namespace: vikareta
 
 image:
   repository: ghcr.io/aryannkumar/vikareta-backend
-  tag: main
+  tag: latest
   pullPolicy: Always
 
 replicaCount: 2
@@ -18,8 +18,8 @@ resources:
     cpu: 500m
     memory: 512Mi
   requests:
-    cpu: 250m
-    memory: 256Mi
+    cpu: 100m
+    memory: 128Mi
 
 imagePullSecrets:
   - name: ghcr-secret
@@ -45,6 +45,9 @@ readinessProbe:
     port: 5001
   initialDelaySeconds: 5
   periodSeconds: 5
+
+migration:
+  enabled: true
 
 nodeSelector: {}
 tolerations: []

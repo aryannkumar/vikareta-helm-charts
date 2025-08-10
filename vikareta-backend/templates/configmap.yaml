@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+data:
+  DATABASE_URL: "postgresql://vikareta_user:VkRt_P0stgr3s_2025_Pr0d_S3cur3_P@ssw0rd!@postgres-service:5432/vikareta_prod"
+  REDIS_URL: "redis://:VkRt_R3d1s_2025_Pr0d_S3cur3_P@ssw0rd!@redis-service:6379"
+  NODE_ENV: "production"
+  PORT: "5001"
+  ALLOWED_ORIGINS: "https://vikareta.com,https://www.vikareta.com,https://admin.vikareta.com,https://dashboard.vikareta.com,http://localhost:3000,http://localhost:3001,http://localhost:3002"

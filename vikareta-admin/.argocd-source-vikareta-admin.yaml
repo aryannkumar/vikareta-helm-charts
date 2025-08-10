@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/aryannkumar/vikareta-admin
     forcestring: true
   - name: image.tag
-    value: main-01a886d
+    value: latest
     forcestring: true

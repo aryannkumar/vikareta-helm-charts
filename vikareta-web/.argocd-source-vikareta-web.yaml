@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/aryannkumar/vikareta-web
     forcestring: true
   - name: image.tag
-    value: main-0f96933
+    value: main-13f8d1f
     forcestring: true

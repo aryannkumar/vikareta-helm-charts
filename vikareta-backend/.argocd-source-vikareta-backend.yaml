@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/aryannkumar/vikareta-backend
     forcestring: true
   - name: image.tag
-    value: latest
+    value: main-2ed0bff
     forcestring: true

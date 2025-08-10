@@ -24,6 +24,10 @@ resources:
 imagePullSecrets:
   - name: ghcr-secret
 
+envFrom:
+  - configMapRef:
+      name: backend-config
+
 env:
   - name: NODE_ENV
     value: "production"

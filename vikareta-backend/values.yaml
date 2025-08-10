@@ -47,7 +47,7 @@ readinessProbe:
   periodSeconds: 5
 
 migration:
-  enabled: true
+  enabled: false
 
 nodeSelector: {}
 tolerations: []

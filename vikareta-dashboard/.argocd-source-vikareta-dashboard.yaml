@@ -4,5 +4,5 @@ helm:
     value: ghcr.io/aryannkumar/vikareta-dashboard
     forcestring: true
   - name: image.tag
-    value: main-c02a8f3
+    value: main-3e74d74
     forcestring: true
